@@ -7,9 +7,7 @@ project(
     LANGUAGES CXX
 )
 
-add_library(ISA_Calculator_Library
-    src/ISA.cpp
-)
+add_library(ISA_Calculator_Librarysrc/ISA.cpp)
 
 target_include_directories(ISA_Calculator_Library
     PUBLIC
@@ -19,7 +17,7 @@ target_include_directories(ISA_Calculator_Library
 
 target_compile_features(ISA_Calculator_Library PUBLIC cxx_std_17)
 
-# Compiler warnings (optional but recommended)
+# Compiler warnings
 if (MSVC)
     target_compile_options(ISA_Calculator_Library PRIVATE /W4)
 else()
