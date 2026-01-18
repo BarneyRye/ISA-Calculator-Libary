@@ -4,11 +4,11 @@ A collection of functions to calcualte pressure, temperature, density and speed 
 
 libary use:
 
-isa isaCalc; //Call first to initialise
+isa isaCalc;   //Call first to initialise
 
-//Returns floats
-isaCalc.getAltTemp(altiude);
-isaCalc.getAltPres(altiude);
-isaCalc.getAltRho(altiude);
+//Returns floats   </br>
+isaCalc.getAltTemp(altiude);  </br>
+isaCalc.getAltPres(altiude);  </br>
+isaCalc.getAltRho(altiude);  </br>
 isaCalc,getAltSpeedOfSound(altiude);
 
