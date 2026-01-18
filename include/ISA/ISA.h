@@ -17,9 +17,9 @@
 #define mesosphere_lapse_rate -0.0028f
 
 
-class iso {
+class isa {
     public:
-        iso(float slTemp = 288.15f, float slRho = 1.225f, float slPres = 101325.0f);
+        isa(float slTemp = 288.15f, float slRho = 1.225f, float slPres = 101325.0f);
         float getAltTemp(float altitude);
         float getAltPres(float altitude);
         float getAltRho(float altitude);

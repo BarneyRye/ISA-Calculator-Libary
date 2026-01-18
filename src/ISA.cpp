@@ -1,9 +1,9 @@
 # include "ISA.h"
 
-iso::iso(float slTemp = 288.15f, float slRho = 1.225f, float slPres = 101325.0f)
+isa::isa(float slTemp = 288.15f, float slRho = 1.225f, float slPres = 101325.0f)
     : _slTemp(slTemp), _slRho(slRho), _slPres(slPres), _seaLevel(0.0f), _g(9.80665f), _R(287.058f), _gamma(1.4f) {}
 
-float iso::getAltTemp(float altitude) {
+float isa::getAltTemp(float altitude) {
     if (altitude < troposhpere_altitude) {
         return calcTropShpereTemp(altitude);
     }
@@ -26,7 +26,7 @@ float iso::getAltTemp(float altitude) {
     }
 }
 
-float iso::getAltPres(float altitude) {
+float isa::getAltPres(float altitude) {
     if (altitude < troposhpere_altitude) {
         float temp = calcTropShpereTemp(altitude);
         return calcTropShperePres(altitude, temp);
@@ -59,43 +59,43 @@ float iso::getAltPres(float altitude) {
     }
 }
 
-float iso::getAltRho(float altitude) {
+float isa::getAltRho(float altitude) {
     float pres = getAltPres(altitude);
     float temp = getAltTemp(altitude);
     return pres / (_R * temp);
 }
 
-float iso::getAltSpeedOfSound(float altitude) {
+float isa::getAltSpeedOfSound(float altitude) {
     float temp = getAltTemp(altitude);
     return sqrtf(_gamma * _R * temp);
 }
 
-float iso::calcTropShpereTemp(float altitude) {
+float isa::calcTropShpereTemp(float altitude) {
     return _slTemp + troposhpere_lapse_rate * (altitude - _seaLevel);
 }
 
-float iso::calcTropShperePres(float altitude, float temp) {
+float isa::calcTropShperePres(float altitude, float temp) {
     return _slPres * powf((temp / _slTemp), (-_g / (troposhpere_lapse_rate * _R)));
 }
 
-float iso::calcTropoPausePres(float altitude, float temp, float pres_init) {
+float isa::calcTropoPausePres(float altitude, float temp, float pres_init) {
     return pres_init * expf((-_g / (_R * temp)) * (altitude - troposhpere_altitude));
 }
 
-float iso::calcStratoSphereTemp(float altitude, float temp_init) {
+float isa::calcStratoSphereTemp(float altitude, float temp_init) {
     return temp_init + stratosphere_lapse_rate * (altitude - tropopause_altitude);
 }
 
-float iso::calcStratoSpherePres(float altitude, float temp, float pres_init) {
+float isa::calcStratoSpherePres(float altitude, float temp, float pres_init) {
     return pres_init * powf((temp / calcStratoSphereTemp(tropopause_altitude, calcTropShpereTemp(troposhpere_altitude))),
                            (-_g / (stratosphere_lapse_rate * _R)));
 }
 
-float iso::calcMesoSphereTemp(float altitude, float temp_init) {
+float isa::calcMesoSphereTemp(float altitude, float temp_init) {
     return temp_init + mesosphere_lapse_rate * (altitude - stratosphere_altitude);
 }
 
-float iso::calcMesoSpherePres(float altitude, float temp, float pres_init) {
+float isa::calcMesoSpherePres(float altitude, float temp, float pres_init) {
     return pres_init * powf((temp / calcMesoSphereTemp(stratosphere_altitude, calcStratoSphereTemp(tropopause_altitude, calcTropShpereTemp(troposhpere_altitude)))),
                            (-_g / (mesosphere_lapse_rate * _R)));
 }
