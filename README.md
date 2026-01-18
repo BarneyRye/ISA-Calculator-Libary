@@ -2,7 +2,7 @@
 
 A libary to calulate atmospheric properties up to 85km using the International Standard Atmosphere Model
 
-The libary allows you to calcualte:  </br>
+The libary allows you to calculate:  </br>
 -Pressure  </br>
 -Temperature  </br>
 -Density  </br>
