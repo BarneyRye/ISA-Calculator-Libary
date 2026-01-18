@@ -8,16 +8,6 @@ The libary allows you to calcualte:
 -Density
 -Speed of sound
 
-## Build
-
-This project uses CMake, steps to build found below
-
-```bash
-mkdir build
-cd build
-cmake ..
-cmake --build .
-```
 ## Example Code:
 
 ```cpp
