@@ -38,22 +38,19 @@ float isa::getAltPres(float altitude) {
     }
     else if (altitude < stratosphere_altitude) {
         float tropopauseTemp = calcTropShpereTemp(troposhpere_altitude);
-        float presAtTropopause = calcTropoPausePres(tropopause_altitude, tropopauseTemp,
-                                                   calcTropShperePres(troposhpere_altitude, tropopauseTemp));
+        float presAtTropopause = calcTropoPausePres(tropopause_altitude, tropopauseTemp, calcTropShperePres(troposhpere_altitude, tropopauseTemp));
         float stratoTemp = calcStratoSphereTemp(altitude, tropopauseTemp);
         return calcStratoSpherePres(altitude, stratoTemp, presAtTropopause);
     }
     else if (altitude < mesosphere_altitude) {
         float tropopauseTemp = calcTropShpereTemp(troposhpere_altitude);
-        float presAtTropopause = calcTropoPausePres(tropopause_altitude, tropopauseTemp,
-                                                   calcTropShperePres(troposhpere_altitude, tropopauseTemp));
+        float presAtTropopause = calcTropoPausePres(tropopause_altitude, tropopauseTemp, calcTropShperePres(troposhpere_altitude, tropopauseTemp));
         float stratoTemp = calcStratoSphereTemp(stratosphere_altitude, tropopauseTemp);
         return calcStratoSpherePres(stratosphere_altitude, stratoTemp, presAtTropopause);
     }
     else {
         float tropopauseTemp = calcTropShpereTemp(troposhpere_altitude);
-        float presAtTropopause = calcTropoPausePres(tropopause_altitude, tropopauseTemp,
-                                                   calcTropShperePres(troposhpere_altitude, tropopauseTemp));
+        float presAtTropopause = calcTropoPausePres(tropopause_altitude, tropopauseTemp, calcTropShperePres(troposhpere_altitude, tropopauseTemp));
         float stratoTemp = calcStratoSphereTemp(stratosphere_altitude, tropopauseTemp);
         return calcStratoSpherePres(mesosphere_altitude, stratoTemp, presAtTropopause);
     }
@@ -87,8 +84,9 @@ float isa::calcStratoSphereTemp(float altitude, float temp_init) {
 }
 
 float isa::calcStratoSpherePres(float altitude, float temp, float pres_init) {
-    return pres_init * powf((temp / calcStratoSphereTemp(tropopause_altitude, calcTropShpereTemp(troposhpere_altitude))),
-                           (-_g / (stratosphere_lapse_rate * _R)));
+    return pres_init * powf(
+        (temp / calcStratoSphereTemp(tropopause_altitude, calcTropShpereTemp(troposhpere_altitude))),
+        (-_g / (stratosphere_lapse_rate * _R)));
 }
 
 float isa::calcMesoSphereTemp(float altitude, float temp_init) {
@@ -96,6 +94,7 @@ float isa::calcMesoSphereTemp(float altitude, float temp_init) {
 }
 
 float isa::calcMesoSpherePres(float altitude, float temp, float pres_init) {
-    return pres_init * powf((temp / calcMesoSphereTemp(stratosphere_altitude, calcStratoSphereTemp(tropopause_altitude, calcTropShpereTemp(troposhpere_altitude)))),
-                           (-_g / (mesosphere_lapse_rate * _R)));
+    return pres_init * powf(
+        (temp / calcMesoSphereTemp(stratosphere_altitude, calcStratoSphereTemp(tropopause_altitude, calcTropShpereTemp(troposhpere_altitude)))),
+        (-_g / (mesosphere_lapse_rate * _R)));
 }
