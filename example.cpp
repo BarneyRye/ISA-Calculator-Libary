@@ -20,4 +20,6 @@ int main() {
     std::cout << "Pressure: " << presPa << " Pa\n";
     std::cout << "Density: " << rho << " kg/m³\n";
     std::cout << "Speed of Sound: " << speedOfSound << " m/s\n";
+
+    return 0;
 }
