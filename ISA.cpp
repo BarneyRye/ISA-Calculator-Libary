@@ -1,6 +1,6 @@
 # include "ISA.h"
 
-isa::isa(float slTemp = 288.15f, float slRho = 1.225f, float slPres = 101325.0f) //Constructor with default sea level conditions
+isa::isa(float slTemp, float slRho, float slPres) //Constructor with default sea level conditions
     : _slTemp(slTemp), _slRho(slRho), _slPres(slPres), _seaLevel(0.0f), _g(9.80665f), _R(287.058f), _gamma(1.4f) {}
 
 float isa::getAltTemp(float altitude) { //Get temperature at altitude in Kelvin
