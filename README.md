@@ -18,10 +18,12 @@ int main() {
   isa isaCalc;
   float altiude = 14000.0f;
 
-  float temp = isaCalc.getAltTemp(altiude);
+  float tempK = isaCalc.getAltTemp(altiude);
   float pressure = isaCalc.getAltPres(altiude);
   float density = isaCalc.getAltRho(altiude);
   float speed =  isaCalc.getAltSpeedOfSound(altiude);
+  float tempC = isaCalc.tempKtoC(tempK);
+  float tempF = isaCalc.tempKtoF(tempK);
 
   ...
 

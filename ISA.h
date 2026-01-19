@@ -11,10 +11,15 @@
 #define troposhpere_altitude 11000.0f
 #define troposhpere_lapse_rate -0.0065f
 #define tropopause_altitude 20000.0f
-#define stratosphere_altitude 32000.0f
-#define stratosphere_lapse_rate 0.001f
-#define mesosphere_altitude 47000.0f
-#define mesosphere_lapse_rate -0.0028f
+#define stratosphere_middle_altitude 32000.0f
+#define stratosphere_lower_lapse_rate 0.001f
+#define stratosphere_top_altitude 47000.0f
+#define stratosphere_upper_lapse_rate 0.0028f
+#define stratopause_altitude 51000.0f
+#define mesosphere_middle_altitude 71000.0f
+#define mesosphere_lower_lapse_rate -0.0028f
+#define mesosphere_top_altitude 85000.0f
+#define mesosphere_lapse_rate -0.0020f
 
 
 class isa {
@@ -36,11 +41,12 @@ class isa {
 
         float calcTropShpereTemp(float altitude);
         float calcTropShperePres(float altitude, float temp);
-        float calcTropoPausePres(float altitude, float temp, float pres_init);
-        float calcStratoSphereTemp(float altitude, float temp_init);
-        float calcStratoSpherePres(float altitude, float temp,float pres_init);
-        float calcMesoSphereTemp(float altitude, float temp_init);
-        float calcMesoSpherePres(float altitude, float temp, float pres_init);
+        float calcTropoPausePres(float altitude, float temp_base, float pres_base);
+        float calcStratoSphereTemp(float altitude, float temp_base);
+        float calcStratoSpherePres(float altitude, float temp_base, float temp_strato, float pres_base);
+        float calcStratoPausePres(float altitude, float temp_base,float pres_base);
+        float calcMesoSphereTemp(float altitude, float temp_base);
+        float calcMesoSpherePres(float altitude, float temp_base, float temp_meso, float pres_base);
 };
 
 #endif // ISA_H
