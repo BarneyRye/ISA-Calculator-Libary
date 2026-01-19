@@ -3,10 +3,10 @@
 A libary to calulate atmospheric properties up to 85km using the International Standard Atmosphere Model
 
 The libary allows you to calculate:  </br>
--Pressure  </br>
--Temperature  </br>
--Density  </br>
--Speed of sound  </br>
+-Pressure (Pa)  </br>
+-Temperature (K)  </br>
+-Density (kg/m^3)  </br>
+-Speed of sound (m/s)  </br>
 -Convert Kelvin to Celsius </br>
 -Convert Kelvin to Fahrenheit
 
