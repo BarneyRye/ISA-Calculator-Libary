@@ -7,6 +7,8 @@ The libary allows you to calculate:  </br>
 -Temperature  </br>
 -Density  </br>
 -Speed of sound  </br>
+-Convert Kelvin to Celsius </br>
+-Convert Kelvin to Fahrenheit
 
 ## Example Code:
 
